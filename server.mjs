@@ -1,7 +1,8 @@
 import http from 'http';
 import url from 'url';
 import fs from 'fs';
-
+import path from 'path';
+const __dirname =  path.resolve();
 
 http.createServer((request, response) => {
   let addr = request.url,
