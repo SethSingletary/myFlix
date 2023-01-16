@@ -24,5 +24,6 @@ app.get('/movies', (req, res) =>{
 app.get('/', (req, res) =>{
     console.log('default response');
 })
+app.use(express.static('public'));
 
 console.log('My first node server is running on Port 8080.');
