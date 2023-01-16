@@ -2,6 +2,13 @@ const { response } = require('express');
 const express = require('express');
 const res = require('express/lib/response');
 const app = express();
+const morgan = require('morgan');
+const fs = require('fs');
+
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
+app.use(morgan('combined', {stream: accessLogStream}));
+
+app.use(express.static('public'));
 
 let topMovies = [
     {
@@ -9,13 +16,6 @@ let topMovies = [
         author: 'LucasFilms'
     }
 ];
-
-const http = require('http');
-
-http.createServer((request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end('Welcome to my book club!\n');
-}).listen(8080);
 
 app.get('/movies', (req, res) =>{
     res.json(topMovies);
@@ -26,4 +26,6 @@ app.get('/', (req, res) =>{
 })
 app.use(express.static('public'));
 
-console.log('My first node server is running on Port 8080.');
+app.listen(8080, () => {
+    console.log('Your app is listening on port 8080.');
+});
