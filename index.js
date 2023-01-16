@@ -4,6 +4,7 @@ const res = require('express/lib/response');
 const app = express();
 const morgan = require('morgan');
 const fs = require('fs');
+const path = require('path');
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 app.use(morgan('combined', {stream: accessLogStream}));
