@@ -16,3 +16,5 @@ Timestamp: Thu Jan 12 2023 16:30:16 GMT-0500 (Eastern Standard Time)
 URL: /favicon.ico
 Timestamp: Thu Jan 12 2023 16:30:16 GMT-0500 (Eastern Standard Time)
 
+::1 - - [16/Jan/2023:20:04:34 +0000] "GET / HTTP/1.1" - - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
+::1 - - [16/Jan/2023:20:04:39 +0000] "GET / HTTP/1.1" - - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36"
