@@ -33,13 +33,13 @@ app.get('/movies/directors', (req, res) => {
 app.post('/users', (req, res) => {
     res.send('Successful POST request creating new user');
   });
-app.get('/users/:id', (req, res) => {
+app.put('/users/:id', (req, res) => {
     res.send('Successful PUT request updating user data');
   });
-app.get('/users/:id/:movieTitle', (req, res) => {
+app.delete('/users/:id/:movieTitle', (req, res) => {
     res.send('Successful DELETE request deleting movie from favorites');
   });
-app.get('/users/:id', (req, res) => {
+app.delete('/users/:id', (req, res) => {
     res.send('Successful DELETE request deleting user');
   });
 
