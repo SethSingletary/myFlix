@@ -17,7 +17,9 @@ let topMovies = [
         author: 'LucasFilms'
     }
 ];
-
+app.get('/', (req, res) => {
+    res.send('Default response');
+});
 app.get('/movies', (req, res) => {
     res.send('Successful GET request returning data on all movies');
   });
@@ -43,16 +45,6 @@ app.delete('/users/:id', (req, res) => {
     res.send('Successful DELETE request deleting user');
   });
 
-
-
-
-app.get('/movies', (req, res) =>{
-    res.json(topMovies);
-    console.log('movies!!');
-})
-app.get('/', (req, res) =>{
-    console.log('default response');
-})
 app.use(express.static('public'));
 
 app.listen(8080, () => {
