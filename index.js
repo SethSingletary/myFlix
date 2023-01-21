@@ -27,7 +27,7 @@ app.get('/movies/:title', (req, res) => {
 app.get('/movies/genres/:title', (req, res) => {
     res.send('Successful GET request returning data on chosen movies genre');
   });
-app.get('/movies/directors', (req, res) => {
+app.get('/movies/directors/:director', (req, res) => {
     res.send('Successful GET request returning data on chosen movies director');
   });
 app.post('/users', (req, res) => {
