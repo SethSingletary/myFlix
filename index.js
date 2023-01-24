@@ -5,6 +5,13 @@ const app = express();
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
+const mongoose = require('mongoose');
+const Model = require('./models.js');
+
+const Movies = Models.Movie;
+const Users = Models.User;
+
+mongoose.connect('mongodb://localhost:27017//myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true});
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 app.use(morgan('combined', {stream: accessLogStream}));
