@@ -76,3 +76,7 @@ Timestamp: Thu Jan 12 2023 16:30:16 GMT-0500 (Eastern Standard Time)
 ::1 - - [21/Jan/2023:03:45:21 +0000] "PUT /users/:id HTTP/1.1" 200 41 "-" "PostmanRuntime/7.30.0"
 ::1 - - [21/Jan/2023:03:45:33 +0000] "DELETE /users/:id/:movieTitle HTTP/1.1" 200 55 "-" "PostmanRuntime/7.30.0"
 ::1 - - [21/Jan/2023:03:45:43 +0000] "DELETE /users/:id HTTP/1.1" 200 39 "-" "PostmanRuntime/7.30.0"
+::1 - - [25/Jan/2023:22:15:51 +0000] "GET /movies HTTP/1.1" 200 51 "-" "PostmanRuntime/7.30.0"
+::1 - - [25/Jan/2023:22:15:55 +0000] "GET /movies/:title HTTP/1.1" 200 53 "-" "PostmanRuntime/7.30.0"
+::1 - - [25/Jan/2023:22:15:58 +0000] "GET /movies/genres/:title HTTP/1.1" 200 60 "-" "PostmanRuntime/7.30.0"
+::1 - - [25/Jan/2023:22:16:01 +0000] "DELETE /users/:id/:movieTitle HTTP/1.1" 200 55 "-" "PostmanRuntime/7.30.0"

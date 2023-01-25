@@ -8,8 +8,8 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Model = require('./models.js');
 
-const Movies = Models.Movie;
-const Users = Models.User;
+const Movies = Model.Movie;
+const Users = Model.User;
 
 mongoose.connect('mongodb://localhost:27017//myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true});
 
@@ -24,11 +24,12 @@ let topMovies = [
         author: 'LucasFilms'
     }
 ];
+
 app.get('/', (req, res) => {
     res.send('Default response');
 });
 app.get('/movies', (req, res) => {
-    res.send('Successful GET request returning data on all movies');
+  res.send('Successful GET request returning data on all movies');
   });
 app.get('/movies/:title', (req, res) => {
     res.send('Successful GET request returning data on chosen movie');
