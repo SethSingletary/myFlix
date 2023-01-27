@@ -42,11 +42,12 @@ app.get('/movies/:title', (req, res) => {
     //res.send('Successful GET request returning data on chosen movie');
   });
 app.get('/movies/genres/:title', (req, res) => {
-  Movies.findOne({Genre : 'Drama'}).then((Movie) => {res.json(Movie)})
+  Movies.findOne({Genre : 'Drama'}).then((Movie) => {res.json(Movie.Genre)});
     //res.send('Successful GET request returning data on chosen movies genre');
   });
 app.get('/movies/directors/:director', (req, res) => {
-    res.send('Successful GET request returning data on chosen movies director');
+  Movies.findOne({'Director.Name': 'George Lucas'}).then((Movie) => {res.json(Movie.Director)});
+    //res.send('Successful GET request returning data on chosen movies director');
   });
 app.post('/users', (req, res) => {
     res.send('Successful POST request creating new user');

@@ -3,10 +3,12 @@ const mongoose = require('mongoose');
 let movieSchema = mongoose.Schema({
     Title: {type: String, required: true},
     Description: {type: String, required: true},
-    Genre: {
-        Name: String,
-        Description: String
-    },
+    //Reinsert this code, however need to redo whole data base too
+    //Genre: {
+      //  Name: String,
+        //Description: String
+    //},
+    Genre: {type: String, required: true},
     Director: {
         Name: String,
         Bio: String
