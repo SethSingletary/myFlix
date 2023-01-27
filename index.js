@@ -38,19 +38,31 @@ app.get('/movies', (req, res) => {
   //res.send('Successful GET request returning data on all movies');
   });
 app.get('/movies/:title', (req, res) => {
-  Movies.findOne({Title : 'Attack of the Clones'}).then((Movie) => {res.json(Movie)})
+  Movies.findOne({Title : req.body.Title}).then((Movie) => {res.json(Movie)})
     //res.send('Successful GET request returning data on chosen movie');
   });
 app.get('/movies/genres/:title', (req, res) => {
-  Movies.findOne({Genre : 'Drama'}).then((Movie) => {res.json(Movie.Genre)});
+  Movies.findOne({Genre : req.body.Genre}).then((Movie) => {res.json(Movie.Genre)});
     //res.send('Successful GET request returning data on chosen movies genre');
   });
 app.get('/movies/directors/:director', (req, res) => {
-  Movies.findOne({'Director.Name': 'George Lucas'}).then((Movie) => {res.json(Movie.Director)});
+  Movies.findOne({'Director.Name': req.body.Director.Name}).then((Movie) => {res.json(Movie.Director)});
     //res.send('Successful GET request returning data on chosen movies director');
   });
 app.post('/users', (req, res) => {
-    res.send('Successful POST request creating new user');
+  Users.findOne({Username:req.body.Username}).then((User) =>{
+    if(User) {
+      return res.status(400).send(req.body.Username + 'already exists');
+    } else{
+      Users.create({
+        Username: req.body.Username,
+        Password: req.body.Password,
+        Email: req.body.Email,
+        Birthday: req.body.Birthday
+      }).then((User) =>{res.json(User)});
+    }
+  });
+    //res.send('Successful POST request creating new user');
   });
 app.put('/users/:id', (req, res) => {
     res.send('Successful PUT request updating user data');
