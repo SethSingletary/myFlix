@@ -35,19 +35,15 @@ app.get('/', (req, res) => {
 });
 app.get('/movies', (req, res) => {
   Movies.find().then(Movies => res.json(Movies))
-  //res.send('Successful GET request returning data on all movies');
   });
 app.get('/movies/:title', (req, res) => {
   Movies.findOne({Title : req.body.Title}).then((Movie) => {res.json(Movie)})
-    //res.send('Successful GET request returning data on chosen movie');
   });
 app.get('/movies/genres/:title', (req, res) => {
   Movies.findOne({Genre : req.body.Genre}).then((Movie) => {res.json(Movie.Genre)});
-    //res.send('Successful GET request returning data on chosen movies genre');
   });
 app.get('/movies/directors/:director', (req, res) => {
   Movies.findOne({'Director.Name': req.body.Director.Name}).then((Movie) => {res.json(Movie.Director)});
-    //res.send('Successful GET request returning data on chosen movies director');
   });
 app.post('/users', (req, res) => {
   Users.findOne({Username:req.body.Username}).then((User) =>{
@@ -62,8 +58,7 @@ app.post('/users', (req, res) => {
       }).then((User) =>{res.json(User)});
     }
   });
-    //res.send('Successful POST request creating new user');
-  });
+});
 app.put('/users/:id', (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {$set:{
     Username: req.body.Username,
@@ -82,16 +77,50 @@ app.put('/users/:id', (req, res) => {
   }
 }
 );
-    //res.send('Successful PUT request updating user data');
-  });
+});
 
-
+app.post('/users/:id/:movieTitle', (req, res) => {
+  Users.findOneAndUpdate({Username: req.params.Username}, {$push:{FavoriteMovies: req.params.MovieID}},
+    {new:true},
+    (err, updatedUser) => {
+      if(err){
+        console.log(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
+    }
+    )
+  //res.send('Successful POST request adding movie to favorites');
+});
 
 app.delete('/users/:id/:movieTitle', (req, res) => {
-    res.send('Successful DELETE request deleting movie from favorites');
+  Users.findOneAndDelete({Username: req.params.Username}, {$set:{FavoriteMovies: req.params.MovieID}},
+    {new:true},
+    (err, updatedUser) => {
+      if(err){
+        console.log(err);
+        res.status(500).send('Error: ' + err);
+      } else{
+        res.json(updatedUser);
+      }
+    }
+    )
+    //res.send('Successful DELETE request deleting movie from favorites');
   });
 app.delete('/users/:id', (req, res) => {
-    res.send('Successful DELETE request deleting user');
+  Users.findOneAndDelete({Username: req.params.Username}).then((User) => {
+    if(!User){
+      res.status(400).send(req.params.Username + ' was not found');
+    } else{
+      res.status(200).send(req.params.Username + ' was deleted');
+    }
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(500).send('Error: ' + err);
+  });
+    //res.send('Successful DELETE request deleting user');
   });
 
 app.use(express.static('public'));
