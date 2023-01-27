@@ -10,6 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const Model = require('./models.js');
+const { title } = require('process');
 
 
 const Movies = Model.Movie;
@@ -33,14 +34,16 @@ app.get('/', (req, res) => {
     res.send('Default response');
 });
 app.get('/movies', (req, res) => {
-  Movies.find().then(movies => res.json(movies));
+  Movies.find().then(Movies => res.json(Movies))
   //res.send('Successful GET request returning data on all movies');
   });
 app.get('/movies/:title', (req, res) => {
-    res.send('Successful GET request returning data on chosen movie');
+  Movies.findOne({Title : 'Attack of the Clones'}).then((Movie) => {res.json(Movie)})
+    //res.send('Successful GET request returning data on chosen movie');
   });
 app.get('/movies/genres/:title', (req, res) => {
-    res.send('Successful GET request returning data on chosen movies genre');
+  Movies.findOne({Genre : 'Drama'}).then((Movie) => {res.json(Movie)})
+    //res.send('Successful GET request returning data on chosen movies genre');
   });
 app.get('/movies/directors/:director', (req, res) => {
     res.send('Successful GET request returning data on chosen movies director');
