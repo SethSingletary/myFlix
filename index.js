@@ -2,16 +2,20 @@ const { response } = require('express');
 const express = require('express');
 const res = require('express/lib/response');
 const app = express();
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}))
 const morgan = require('morgan');
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const Model = require('./models.js');
 
+
 const Movies = Model.Movie;
 const Users = Model.User;
 
-mongoose.connect('mongodb://localhost:27017//myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true});
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 app.use(morgan('combined', {stream: accessLogStream}));
@@ -29,7 +33,8 @@ app.get('/', (req, res) => {
     res.send('Default response');
 });
 app.get('/movies', (req, res) => {
-  res.send('Successful GET request returning data on all movies');
+  Movies.find().then(movies => res.json(movies));
+  //res.send('Successful GET request returning data on all movies');
   });
 app.get('/movies/:title', (req, res) => {
     res.send('Successful GET request returning data on chosen movie');
