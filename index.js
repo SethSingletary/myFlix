@@ -65,7 +65,24 @@ app.post('/users', (req, res) => {
     //res.send('Successful POST request creating new user');
   });
 app.put('/users/:id', (req, res) => {
-    res.send('Successful PUT request updating user data');
+  Users.findOneAndUpdate({Username: req.params.Username}, {$set:{
+    Username: req.body.Username,
+    Password: req.body.Password,
+    Email: req.body.Email,
+    Birthday: req.body.Birthday
+  }
+},
+{new: true},
+(err, updatedUser) => {
+  if(err) {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  } else {
+    res.json(updatedUser);
+  }
+}
+);
+    //res.send('Successful PUT request updating user data');
   });
 app.delete('/users/:id/:movieTitle', (req, res) => {
     res.send('Successful DELETE request deleting movie from favorites');
