@@ -182,3 +182,6 @@ Timestamp: Thu Jan 12 2023 16:30:16 GMT-0500 (Eastern Standard Time)
 ::1 - - [27/Jan/2023:15:53:18 +0000] "PUT /users/:id?Username=SethSingletary HTTP/1.1" 500 16 "-" "PostmanRuntime/7.30.0"
 ::1 - - [27/Jan/2023:15:53:24 +0000] "GET /movies HTTP/1.1" 200 2171 "-" "PostmanRuntime/7.30.0"
 ::1 - - [27/Jan/2023:15:54:01 +0000] "PUT /users/:id?Username=SethSingletary HTTP/1.1" 200 4 "-" "PostmanRuntime/7.30.0"
+::1 - - [27/Jan/2023:15:56:39 +0000] "PUT /users/:id?Username=SethSingletary HTTP/1.1" 200 173 "-" "PostmanRuntime/7.30.0"
+::1 - - [27/Jan/2023:15:56:48 +0000] "PUT /users/:id?Username=SethSingletary HTTP/1.1" 200 4 "-" "PostmanRuntime/7.30.0"
+::1 - - [27/Jan/2023:15:56:53 +0000] "PUT /users/:id?Username=SethSingletary HTTP/1.1" 200 173 "-" "PostmanRuntime/7.30.0"

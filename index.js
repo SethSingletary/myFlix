@@ -65,7 +65,7 @@ app.post('/users', (req, res) => {
     //res.send('Successful POST request creating new user');
   });
 app.put('/users/:id', (req, res) => {
-  Users.findOneAndUpdate({Username: req.params.Username}, {$set:{
+  Users.findOneAndUpdate({Username: req.body.Username}, {$set:{
     Username: req.body.Username,
     Password: req.body.Password,
     Email: req.body.Email,
