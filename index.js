@@ -89,7 +89,7 @@ app.post('/users/:Username/:movieID', (req, res) => {
 });
 
 app.delete('/users/:Username/:movieID', (req, res) => {
-  Users.findOneAndDelete({Username: req.params.Username}, {$pull:{FavoriteMovies: req.params.movieID}},
+  Users.findOneAndUpdate({Username: req.params.Username}, {$pull:{FavoriteMovies: req.params.movieID}},
     {new:true},
     (err, updatedUser) => {
       if(err){
