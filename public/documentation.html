@@ -58,9 +58,9 @@
                 </tr>
                 <tr>
                     <td>Returns director info</td>
-                    <td>/movies/directors</td>
+                    <td>/movies/directors/:director</td>
                     <td>GET</td>
-                    <td>:name</td>
+                    <td>:director</td>
                     <td></td>
                     <td>JSON object containing all info about the director</td>
                 </tr>
@@ -74,35 +74,35 @@
                 </tr>
                 <tr>
                     <td>Updates a users info</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>PUT</td>
-                    <td>:id</td>
+                    <td>:Username</td>
                     <td>JSON object containing updated user info, example:{"name":"Jason"}</td>
                     <td>JSON object containing the new user info</td>
                 </tr>
                 <tr>
                     <td>Allows users to add a movie to their favourites</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/:movieTitle</td>
                     <td>POST</td>
-                    <td>:id, :movieTitle</td>
+                    <td>:Username, :movieTitle</td>
                     <td>-</td>
                     <td>A JSON object holding data about the user and the movie that was added</td>
                   </tr>
             
                   <tr>
                     <td>Allows users to remove a movie from their favourites</td>
-                    <td>/users/:id/:movieTitle</td>
+                    <td>/users/:Username/:movieTitle</td>
                     <td>DELETE</td>
-                    <td>:id, :movieTitle</td>
+                    <td>:Username, :movieTitle</td>
                     <td>-</td>
                     <td>A JSON object holding data about the user and the movie that was removed</td>
                   </tr>
             
                   <tr>
                     <td>Allows existing users to deregister</td>
-                    <td>/users/:id</td>
+                    <td>/users/:Username</td>
                     <td>DELETE</td>
-                    <td>:id</td>
+                    <td>:Username</td>
                     <td>-</td>
                     <td>A text message indicating whether the user has successfully deregistered</td>
                   </tr>
