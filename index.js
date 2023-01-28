@@ -34,7 +34,7 @@ app.get('/movies/:title', (req, res) => {
   Movies.findOne({Title : req.params.title }).then((Movie) => {res.json(Movie)})
   });
 app.get('/movies/genres/:title', (req, res) => {
-  Movies.findOne({Genre : req.params.title }).then((Movie) => {res.json(Movie.Genre)});
+  Movies.findOne({Title : req.params.title}).then((Movie) => {res.json(Movie.Genre)});
   });
 app.get('/movies/directors/:director', (req, res) => {
   Movies.findOne({'Director.Name': req.params.director }).then((Movie) => {res.json(Movie.Director)});
@@ -89,7 +89,7 @@ app.post('/users/:Username/:movieID', (req, res) => {
 });
 
 app.delete('/users/:Username/:movieID', (req, res) => {
-  Users.findOneAndDelete({Username: req.params.Username}, {$set:{FavoriteMovies: req.params.movieID}},
+  Users.findOneAndDelete({Username: req.params.Username}, {$pull:{FavoriteMovies: req.params.movieID}},
     {new:true},
     (err, updatedUser) => {
       if(err){
