@@ -59,7 +59,7 @@ app.post('/users', (req, res) => {
     }
   });
 });
-app.put('/users/:id', (req, res) => {
+app.put('/users/:Username', (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {$set:{
     Username: req.body.Username,
     Password: req.body.Password,
@@ -79,7 +79,7 @@ app.put('/users/:id', (req, res) => {
 );
 });
 
-app.post('/users/:id/:movieTitle', (req, res) => {
+app.post('/users/:Username/:movieID', (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {$push:{FavoriteMovies: req.params.MovieID}},
     {new:true},
     (err, updatedUser) => {
@@ -94,7 +94,7 @@ app.post('/users/:id/:movieTitle', (req, res) => {
   //res.send('Successful POST request adding movie to favorites');
 });
 
-app.delete('/users/:id/:movieTitle', (req, res) => {
+app.delete('/users/:Username/:movieID', (req, res) => {
   Users.findOneAndDelete({Username: req.params.Username}, {$set:{FavoriteMovies: req.params.MovieID}},
     {new:true},
     (err, updatedUser) => {
@@ -108,7 +108,7 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
     )
     //res.send('Successful DELETE request deleting movie from favorites');
   });
-app.delete('/users/:id', (req, res) => {
+app.delete('/users/:Username', (req, res) => {
   Users.findOneAndDelete({Username: req.params.Username}).then((User) => {
     if(!User){
       res.status(400).send(req.params.Username + ' was not found');
