@@ -6,6 +6,9 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 const morgan = require('morgan');
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
 const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
@@ -27,7 +30,7 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.send('Default response');
 });
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.find().then(Movies => res.json(Movies))
   });
 app.get('/movies/:title', (req, res) => {
