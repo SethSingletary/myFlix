@@ -1,0 +1,4 @@
+{"_id":1,"Username":"user1","Email":"user1@gmail.com","Birthday":{"$date":"2023-01-01T00:00:00Z"},"Password":"password1","Favorites":[{"$oid":"63ced7d19a431551f7f5fc51"},{"$oid":"63ced8959a431551f7f5fc52"},{"$oid":"63ced9709a431551f7f5fc53"},{"$oid":"63cee0009a431551f7f5fc5a"}]}
+{"_id":2,"Username":"user2","Email":"user2@gmail.com","Birthday":{"$date":"2023-02-02T00:00:00Z"},"Password":"password2","Favorites":[{"$oid":"63ced9709a431551f7f5fc53"},{"$oid":"63cede669a431551f7f5fc58"}]}
+{"_id":3,"Username":"user3","Email":"user3@gmail.com","Birthday":{"$date":"2023-03-03T00:00:00Z"},"Password":"password3","Favorites":[{"$oid":"63ceda319a431551f7f5fc54"}]}
+{"_id":4,"Username":"user4","Email":"user4@gmail.com","Birthday":{"$date":"2023-04-04T00:00:00Z"},"Password":"password4","Favorites":[{"$oid":"63ced7d19a431551f7f5fc51"},{"$oid":"63cedb2e9a431551f7f5fc55"}]}
