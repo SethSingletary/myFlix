@@ -34,18 +34,23 @@ app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.send('Default response');
 });
+
 app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.find().then(Movies => res.json(Movies))
   });
+
 app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({Title : req.params.title }).then((Movie) => {res.json(Movie)})
   });
+
 app.get('/movies/genres/:title', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({Title : req.params.title}).then((Movie) => {res.json(Movie.Genre)});
   });
+
 app.get('/movies/directors/:director', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({'Director.Name': req.params.director }).then((Movie) => {res.json(Movie.Director)});
   });
+
 app.post('/users',[
   check('Username', 'Username is required').isLength({min: 5}),
   check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
@@ -74,9 +79,11 @@ app.post('/users',[
   });
 });
 app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
+
+  let hashPassword = Users.hashPassword(req.body.Password);
   Users.findOneAndUpdate({Username: req.params.Username}, {$set:{
     Username: req.body.Username,
-    Password: req.body.Password,
+    Password: hashPassword,
     Email: req.body.Email,
     Birthday: req.body.Birthday
   }
