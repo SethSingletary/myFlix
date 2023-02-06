@@ -374,3 +374,5 @@ Timestamp: Thu Jan 12 2023 16:30:16 GMT-0500 (Eastern Standard Time)
 127.0.0.1 - - [02/Feb/2023:01:33:08 +0000] "DELETE /users/user3 HTTP/1.1" 200 17 "-" "PostmanRuntime/7.30.0"
 127.0.0.1 - - [02/Feb/2023:01:33:12 +0000] "DELETE /users/user4 HTTP/1.1" 200 17 "-" "PostmanRuntime/7.30.0"
 127.0.0.1 - - [02/Feb/2023:01:33:17 +0000] "DELETE /users/user5 HTTP/1.1" 400 19 "-" "PostmanRuntime/7.30.0"
+127.0.0.1 - - [05/Feb/2023:18:36:48 +0000] "POST /users HTTP/1.1" 400 28 "-" "PostmanRuntime/7.30.0"
+127.0.0.1 - - [05/Feb/2023:18:37:24 +0000] "PUT /users/SethSingletary HTTP/1.1" 200 223 "-" "PostmanRuntime/7.30.0"
