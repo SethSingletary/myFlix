@@ -35,12 +35,12 @@ app.get('/', (req, res) => {
     res.send('Default response');
 });
 
-//app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
-  //Movies.find().then(Movies => res.json(Movies))
-  //});
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.find().then(Movies => res.json(Movies))
   });
+//app.get('/movies', (req, res) => {
+  //Movies.find().then(Movies => res.json(Movies))
+ // });
 
 app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({Title : req.params.title }).then((Movie) => {res.json(Movie)})
