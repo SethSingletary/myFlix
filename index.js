@@ -141,6 +141,22 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req
 });
 */
 
+app.post('/users/:Username/:movieID', (req, res) => {
+  Users.findOneAndUpdate({Username: req.params.Username}, {$push:{FavoriteMovies: req.params.movieID}},
+    {new:true},
+    (err, updatedUser) => {
+      if(err){
+        console.log(err);
+        res.status(500).send('Error: ' + err);
+      } else {
+        res.json(updatedUser);
+      }
+    }
+    )
+  //res.send('Successful POST request adding movie to favorites');
+});
+
+/** 
 app.post('/users/:Username/:movieID', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {$push:{FavoriteMovies: req.params.movieID}},
     {new:true},
@@ -155,6 +171,7 @@ app.post('/users/:Username/:movieID', passport.authenticate('jwt', {session: fal
     )
   //res.send('Successful POST request adding movie to favorites');
 });
+*/
 
 app.delete('/users/:Username/:movieID', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {$pull:{FavoriteMovies: req.params.movieID}},
