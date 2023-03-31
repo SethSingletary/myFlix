@@ -93,6 +93,31 @@ app.post('/users',[
     }
   });
 });
+
+app.put('/users/:Username', (req, res) => {
+
+  let hashPassword = Users.hashPassword(req.body.Password);
+  Users.findOneAndUpdate({Username: req.params.Username}, {$set:{
+    Username: req.body.Username,
+    Password: hashPassword,
+    Email: req.body.Email,
+    Birthday: req.body.Birthday
+  }
+},
+{new: true},
+(err, updatedUser) => {
+  if(err) {
+    console.error(err);
+    res.status(500).send('Error: ' + err);
+  } else {
+    res.json(updatedUser);
+  }
+}
+);
+});
+
+
+/** 
 app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
 
   let hashPassword = Users.hashPassword(req.body.Password);
@@ -114,6 +139,7 @@ app.put('/users/:Username', passport.authenticate('jwt', {session: false}), (req
 }
 );
 });
+*/
 
 app.post('/users/:Username/:movieID', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndUpdate({Username: req.params.Username}, {$push:{FavoriteMovies: req.params.movieID}},
