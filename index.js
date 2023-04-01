@@ -57,7 +57,7 @@ app.get('/movies', (req, res) => {
 
 
 app.get('/users/:Username', (req, res) => {
-  Users.findOne({Username:req.body.Username}).then(User => res.json(User))
+  Users.findOne({Username:req.body.Username}).then(User => res.json(User.Username))
 });
 
 
