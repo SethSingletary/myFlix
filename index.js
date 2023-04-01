@@ -54,6 +54,16 @@ app.get('/movies', (req, res) => {
   Movies.find().then(Movies => res.json(Movies))
  });
 
+
+
+app.get('users/:Username', (req, res) => {
+  Users.findOne({Username:req.body.Username}).then(User => res.json(User))
+})
+
+
+
+ 
+
 app.get('/movies/:title', passport.authenticate('jwt', {session: false}), (req, res) => {
   Movies.findOne({Title : req.params.title }).then((Movie) => {res.json(Movie)})
   });
