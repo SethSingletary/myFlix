@@ -34,8 +34,8 @@ const { check, validationResult } = require('express-validator');
 const Movies = Model.Movie;
 const Users = Model.User;
 
-//mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://localhost:27017/myFlixDB', { useNewUrlParser: true, useUnifiedTopology: true});
+//mongoose.connect(process.env.CONNECTION_URI, { useNewUrlParser: true, useUnifiedTopology: true});
 
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'log.txt'), {flags: 'a'})
 app.use(morgan('combined', {stream: accessLogStream}));
@@ -57,7 +57,7 @@ app.get('/movies', (req, res) => {
 
 
 app.get('/users/:Username', (req, res) => {
-  Users.findOne({Username:req.body.Username}).then((User) => {res.json(User)})
+  Users.findOne({Username : req.params.Username}).then((User) => {res.json(User)})
 });
 
 
@@ -92,7 +92,7 @@ app.post('/users',[
   let hashPassword = Users.hashPassword(req.body.Password);
   Users.findOne({ Username:req.body.Username }).then((User) =>{
     if(User) {
-      return res.status(400).send(req.body.Username + 'already exists');
+      return res.status(400).send(req.body.Username + ' already exists');
     } else{
       Users.create({
         Username: req.body.Username,
