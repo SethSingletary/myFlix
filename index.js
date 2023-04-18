@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}))
 const morgan = require('morgan');
-
+/** 
 const cors = require('cors');
 let allowedOrigins = ['http://localhost:3000', 'http://testsite.com', 'https://myflixsethsingletary.netlify.app/', 'https://my-flix-client-five.vercel.app/', 'https://clever-pixie-e8d67c.netlify.app/'];
 app.use(cors({
@@ -19,6 +19,7 @@ app.use(cors({
     return callback(null, true);
   }
 }));
+*/
 
 let auth = require('./auth')(app);
 const passport = require('passport');
