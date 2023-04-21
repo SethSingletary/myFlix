@@ -230,6 +230,21 @@ app.delete('/users/:Username', passport.authenticate('jwt', {session: false}), (
   });
   */
 
+  app.delete('/users/:Username', (req, res) => {
+    Users.findOneAndDelete({Username: req.params.Username}).then((User) => {
+      if(!User){
+        res.status(400).send(req.params.Username + ' was not found');
+      } else{
+        res.status(200).send(req.params.Username + ' was deleted');
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).send('Error: ' + err);
+    });
+      //res.send('Successful DELETE request deleting user');
+    });
+
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
   console.log('Listening on Port' + port);
