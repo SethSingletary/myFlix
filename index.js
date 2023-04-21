@@ -213,7 +213,7 @@ app.delete('/users/:Username/:movieID', passport.authenticate('jwt', {session: f
       )
       //res.send('Successful DELETE request deleting movie from favorites');
     });
-
+/** 
 app.delete('/users/:Username', passport.authenticate('jwt', {session: false}), (req, res) => {
   Users.findOneAndDelete({Username: req.params.Username}).then((User) => {
     if(!User){
@@ -228,6 +228,7 @@ app.delete('/users/:Username', passport.authenticate('jwt', {session: false}), (
   });
     //res.send('Successful DELETE request deleting user');
   });
+  */
 
 const port = process.env.PORT || 8080;
 app.listen(port, '0.0.0.0',() => {
