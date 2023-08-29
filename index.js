@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 const morgan = require('morgan');
  
 const cors = require('cors');
-let allowedOrigins = ['http://localhost:3000', 'http://testsite.com', 'https://resonant-cassata-933e3a.netlify.app', 'http://localhost:4200', 'http://localhost:4200/', 'https://sethsingletary.github.io/myFlix-Angular-client/'];
+let allowedOrigins = ['http://localhost:3000', 'http://testsite.com', 'https://resonant-cassata-933e3a.netlify.app', 'http://localhost:4200', 'http://localhost:4200/', 'https://sethsingletary.github.io/myFlix-Angular-client/', 'https://sethsingletary.github.io/myFlix-Angular-client/welcome'];
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) return callback(null, true);
