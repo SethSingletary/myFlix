@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+/**
+ * this tells the JSON that movie must have a title, description, genre, director, and have an array of actors
+ */
 let movieSchema = mongoose.Schema({
     Title: {type: String, required: true},
     Description: {type: String, required: true},
@@ -18,7 +21,9 @@ let movieSchema = mongoose.Schema({
     ImagePath: String,
     Featured: Boolean
 });
-
+/**
+ * this tells the JSON that a user must have a username, password, email and birthday
+ */
 let userSchema = mongoose.Schema({
     Username: {type: String, required: true},
     Password: {type: String, required: true},
